@@ -18,12 +18,13 @@ export class StudentCreateComponent {
 
   }
 
-  onSubmit() {
+  onSubmit(form: any) {
     this.isLoading = true;
     this.studentService.createStudent(this.student).subscribe(
       (data: any) => {
         this.toastr.success('Saved successfully', 'Success');
         this.student = new Student();
+        form.resetForm();
         this.isLoading = false;
       },
       (err: any) => {
